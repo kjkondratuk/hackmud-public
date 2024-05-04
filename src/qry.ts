@@ -7,16 +7,19 @@ export default (context: Context, args?: unknown) => {
     const query = args["query"]
     const data = args["data"]
 
+    // Validate command has been specified
     if(cmd === null || typeof(cmd) !== "string") {
         return {ok: false, err: "command must be specified and must be a string"}
     }
 
+    // validate args required by select/delete
     if((cmd === "select" || cmd === "delete")
         && (query === null || typeof(query) !== "object")) {
         return {ok: false, err: "query must be specified and must be an object"}
     }
 
-    if((cmd === "delete")
+    // validate args required for
+    if((cmd === "insert")
         && !(data !== null && (!isArrayofObjects(data) || typeof data !== "object"))) {
         return {ok: false, err: "data must be a Array"}
     }
