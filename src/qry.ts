@@ -1,7 +1,15 @@
 
-export default (context: Context, args?: unknown) => {
+export default (context: Context, args?: unknown) => { // usage:true
     let {caller} = context
     const l = $fs.scripts.lib()
+
+    if(args && args["usage"]) {
+        return "user.qry\n" +
+            "Params:\n" +
+            " - command (all) : insert, update, delete\n" +
+            " - query (select, delete) : {key: value}\n" +
+            " - data (insert) : {key: value} or [{key: value}, {key: value}]\n"
+    }
 
     const cmd = args["command"]
     const query = args["query"]
