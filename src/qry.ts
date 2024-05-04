@@ -3,9 +3,10 @@ export default (context: Context, args?: unknown) => { // usage:true
     let {caller} = context
     const l = $fs.scripts.lib()
 
-    if(args && args["usage"]) {
+    if(!args || args["usage"]) {
         return "user.qry\n" +
-            "Params:\n" +
+            "Param (applicable command): effect/examples\n" +
+            " - usage (all) : only display this message\n" +
             " - command (all) : insert, update, delete\n" +
             " - query (select, delete) : {key: value}\n" +
             " - data (insert) : {key: value} or [{key: value}, {key: value}]\n"
