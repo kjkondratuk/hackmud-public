@@ -18,7 +18,7 @@ export default (context: Context, args?: unknown) => {
         return {ok: false, err: "query must be specified and must be an object"}
     }
 
-    // validate args required for
+    // validate args required for insert
     if((cmd === "insert")
         && !(data !== null && (!isArrayofObjects(data) || typeof data !== "object"))) {
         return {ok: false, err: "data must be a Array"}
